@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+#coding:utf-8
+
+from selenium import webdriver #从selenium库中调用webdriver模块
+import time
+
+driver = webdriver.Chrome() # 设置引擎为Chrome，真实地打开一个Chrome浏览器
+driver.get('http://www.360doc.com/content/19/0517/05/52221680_836226854.shtml') # 访问页面
+time.sleep(10) # 等待10秒
+button = driver.find_element_by_link_text('展开全文') #通过“展开全文”文本找到这个按钮
+time.sleep(10)
+button.click() #戳一下按钮
+time.sleep(10)
+label = driver.find_element_by_id('artContent') # 解析网页并提取所有文本的上级标签<artContent>
+print(label.text) # 打印label的文本
+print("成功啦!") 
+
+driver.close() # 关闭浏览器
